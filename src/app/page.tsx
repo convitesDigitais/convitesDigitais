@@ -1,101 +1,173 @@
-import Image from "next/image";
+"use client";
+import { useState, useEffect } from "react";
+// import { useTheme } from "next-themes";
+// import { FiSun, FiMoon } from "react-icons/fi";
+import NewForm from "./components/newForm";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [mounted, setMounted] = useState(false);
+  const [hied, setHied] = useState(false);
+  const [isNext, setIsNext] = useState(0);
+  const [isForm, setIsForm] = useState(false);
+  const [nomeUser, setNomeUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [contacto, setContacto] = useState("");
+  const [senha, setSenha] = useState("");
+  const [senhaVerificar, setSenhaVerificar] = useState("");
+  const router = useRouter();
+  const carousel = [
+    "Bem-vindo a nossa plataforma – A Solução Completa para Gestão de Convites Digitais!",
+    "Tornamos o processo de enviar, gerenciar e acompanhar convites para eventos mais fácil, rápido e organizado.",
+    "Está planejando uma festa, casamento, conferência ou qualquer outro evento especial?",
+    "Nossa plataforma de convites digitais é a ferramenta ideal para garantir que todos os seus convidados recebam e confirmem sua presença de maneira eficiente.",
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <div className="grid place-items-center h-screen">
+      {isForm ? (
+        <>
+          <NewForm
+            nomeUser={nomeUser}
+            setNomeUser={setNomeUser}
+            email={email}
+            setEmail={setEmail}
+            contacto={contacto}
+            setContacto={setContacto}
+            senha={senha}
+            setSenha={setSenha}
+            senhaVerificar={senhaVerificar}
+            setSenhaVerificar={setSenhaVerificar}
+            router={router}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </>
+      ) : (
+        <>
+          {" "}
+          <div>
+            <h1 className="text-7xl font-bold text-center gap-2">
+              {/* {currentTheme === "dark" ? "Convites" : "Convites"}{" "} */}
+              <span>Convites&nbsp;</span>
+              <span className="text-amber-600">Digitais</span>
+            </h1>
+            {/* <div className="flex justify-center mt-4">
+              {currentTheme === "dark" ? (
+                <FiSun onClick={() => setTheme("light")} />
+              ) : (
+                <FiMoon onClick={() => setTheme("dark")} />
+              )}
+            </div> */}
+            <div>
+              <p className="dark:text-amber-600 my-4 text-center">
+                {carousel[isNext]}
+              </p>
+            </div>
+            {isNext === 0 ? (
+              <>
+                <div className="grid grid-cols-2 gap-4">
+                  <div
+                    className="flex justify-end cursor-pointer"
+                    title="Anterior"
+                  >
+                    {" "}
+                    {/* <Button
+                    as={Link}
+                    color="warning"
+                    href="/dashboard"
+                    variant="flat"
+                  >
+                    Pular Intro
+                  </Button>{" "} */}
+                    <Button
+                      color="warning"
+                      onClick={() => setIsForm(true)}
+                      variant="flat"
+                    >
+                      Pular Intro
+                    </Button>{" "}
+                  </div>
+                  <div className="cursor-pointer" title="Proximo">
+                    <AiOutlineArrowRight
+                      className="dark:text-amber-600 mt-3"
+                      onClick={() => {
+                        if (isNext === carousel.length - 1) {
+                          setHied(true);
+                        } else {
+                          setHied(false);
+                          setIsNext((prev) => (prev += 1));
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 gap-4">
+                  <div
+                    className="flex justify-end cursor-pointer"
+                    title="Anterior"
+                  >
+                    <AiOutlineArrowLeft
+                      className="dark:text-amber-600 mt-3"
+                      onClick={() => {
+                        if (isNext === 0) {
+                        } else {
+                          setHied(false);
+                          setIsNext((prev) => (prev -= 1));
+                        }
+                      }}
+                    />
+                  </div>
+                  <div className="cursor-pointer" title="Proximo">
+                    {hied ? (
+                      <>
+                        {/* <Button
+                        as={Link}
+                        color="warning"
+                        href="/dashboard"
+                        variant="flat"
+                      >
+                        Criar Conta
+                      </Button>{" "} */}
+                        <Button
+                          color="warning"
+                          onClick={() => setIsForm(true)}
+                          variant="flat"
+                        >
+                          Criar Conta
+                        </Button>{" "}
+                      </>
+                    ) : (
+                      <>
+                        <AiOutlineArrowRight
+                          className="dark:text-amber-600 mt-3"
+                          onClick={() => {
+                            if (isNext === carousel.length - 1) {
+                              setHied(true);
+                            } else {
+                              setHied(false);
+                              setIsNext((prev) => (prev += 1));
+                            }
+                          }}
+                        />
+                      </>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }
