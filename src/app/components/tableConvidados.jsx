@@ -18,7 +18,7 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-const linkPerm = "http://localhost:3000/convidado";
+const linkPerm = "https://www.gestaoconvites.com/convidado";
 import { AiFillDelete, AiFillEdit, AiOutlineShareAlt } from "react-icons/ai";
 
 export default function TableConvidados({
