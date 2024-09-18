@@ -53,7 +53,7 @@ export default function Home() {
         <>
           {" "}
           <div>
-            <h1 className="text-7xl font-bold text-center gap-2">
+            <h1 className="text-4xl md:text-7xl font-bold text-center gap-2">
               {/* {currentTheme === "dark" ? "Convites" : "Convites"}{" "} */}
               <span>Convites&nbsp;</span>
               <span className="text-amber-600">Digitais</span>

@@ -668,7 +668,7 @@ export default function DashBoard() {
         />
         <hr />
         {isForm ? (
-          <>
+          <div className="flex justify-center">
             {isAddForm && (
               <NewConvidado
                 setIsForm={setIsForm}
@@ -735,7 +735,7 @@ export default function DashBoard() {
                 setCopoAgua={setCopoAgua}
               />
             )}
-          </>
+          </div>
         ) : (
           <>
             {" "}

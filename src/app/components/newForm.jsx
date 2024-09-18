@@ -203,7 +203,7 @@ export default function NewForm({
       {isFormLogin ? (
         <>
           {" "}
-          <Card className="w-96">
+          <Card className="w-80 md:w-96">
             <h1 className="text-2xl font-bold text-center my-4">LogIn</h1>
             <CardBody>
               <div className="w-full flex flex-col gap-4">
@@ -258,7 +258,7 @@ export default function NewForm({
         </>
       ) : (
         <>
-          <Card className="w-96">
+          <Card className="w-80 md:w-96">
             <h1 className="text-2xl font-bold text-center my-4">Criar Conta</h1>
             <CardBody>
               <div className="w-full flex flex-col gap-4">

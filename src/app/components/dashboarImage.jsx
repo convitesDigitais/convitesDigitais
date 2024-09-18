@@ -42,7 +42,7 @@ export default function DashBoardImage({
     <div>
       <div className="bg-no-repeat bg-[url('/dashFundo.jpg')] bg-cover bg-center">
         <div className="text-center p-12 backdrop-blur-sm bg-white/30">
-          <p className="text-4xl font-bold text-center">Casamento</p>
+          <p className="text-4xl font-bold text-center">Dados do Evento</p>
           {evento.length > 0 ? (
             <>
               {evento.map((item) => (

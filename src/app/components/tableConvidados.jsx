@@ -101,6 +101,7 @@ export default function TableConvidados({
                 Link do Convidado
               </ModalHeader>
               <ModalBody>
+                <p>Copie o link abaixo e envie para o convidado</p>
                 <p>
                   {linkPerm}/{iDLimk}
                 </p>

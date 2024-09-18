@@ -9,11 +9,11 @@ export default function NewCategoria({
   setCategoriaConvidadoa,
 }) {
   return (
-    <div className="p-4">
+    <div className="w-80 p-4">
       <div className="text-center text-2xl font-bold mb-4">
         <p>Nova Categoria de Convidados</p>
       </div>
-      <div class="grid grid-cols-3 gap-4">
+      <div>
         <div></div>
         <div>
           <Card>
