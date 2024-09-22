@@ -6,6 +6,7 @@ const ConvidadosSchema = new Schema(
     mesa: { type: String, require: true },
     categoriaConvidado: { type: String, require: true },
     numeroAcompanhantes: { type: String, require: true },
+    mensagem: { type: String },
     status: { type: String, require: true },
     creator: { type: String, require: true },
   },

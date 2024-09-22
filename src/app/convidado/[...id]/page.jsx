@@ -1,10 +1,9 @@
 "use client";
 import { toast, Bounce } from "react-toastify";
-import { Image, Link } from "@nextui-org/react";
+import { Image, Link, Textarea } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { AiOutlineCheck } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck, AiOutlineClose, AiFillMail } from "react-icons/ai";
 import {
   Modal,
   ModalContent,
@@ -29,7 +28,8 @@ const meses = [
   "Dezembro",
 ];
 export default function DashBoardConvidado() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const aceitar = useDisclosure();
+  const mensagemD = useDisclosure();
   const [nomeConvidado, setNomeConvidado] = useState("");
   const [mesa, setMesa] = useState("");
   const [categoriaConvidado, setCategoriaConvidadoa] = useState("");
@@ -45,7 +45,9 @@ export default function DashBoardConvidado() {
   const [numeroAcompanhantes, setNumeroAcompanhantes] = useState("");
   const [copoAgua, setCopoAgua] = useState("");
   const [confirmacaoConvite, setConfirmacaoConvite] = useState("");
+  const [mensagem, setMensagem] = useState("");
   const [iD, setID] = useState("");
+  // const [isEdit, setIsEdit] = useState(false);
   const ColoredLine = () => (
     <hr
       style={{
@@ -63,10 +65,12 @@ export default function DashBoardConvidado() {
       const data = await response.json();
       data.map((item) => {
         if (item._id === id[0]) {
+          console.log(item);
           setID(item._id);
           setNomeConvidado(item.nomeConvidado);
           setMesa(item.mesa);
           setCategoriaConvidadoa(item.categoriaConvidado);
+          setMensagem(item.mensagem);
           setCreatorID(item.creator);
           setCreator(item.creator);
           setConfirmacaoConvite(item.status);
@@ -95,6 +99,49 @@ export default function DashBoardConvidado() {
     };
     fetchPosts();
   }, [creatorID]);
+  async function enviarMensagem() {
+    toast.info("🦄 Processando!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+    const data = {
+      nomeConvidado,
+      mesa,
+      categoriaConvidado,
+      numeroAcompanhantes,
+      mensagem,
+      status: "Aceite",
+      creator,
+    };
+
+    try {
+      const response = await fetch(`/api/editConvidado/${iD}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      });
+      console.log(response);
+      if (response.ok) {
+        toast.info("🦄 Felicitação enviada com sucesso!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      }
+    } catch (error) {}
+  }
   async function editConvidadoAceitar() {
     toast.info("🦄 Processando!", {
       position: "top-right",
@@ -121,6 +168,7 @@ export default function DashBoardConvidado() {
         method: "PATCH",
         body: JSON.stringify(data),
       });
+      console.log(response);
       if (response.ok) {
         toast.info("🦄 Convite aceite com sucesso!", {
           position: "top-right",
@@ -133,21 +181,8 @@ export default function DashBoardConvidado() {
           theme: "colored",
           transition: Bounce,
         });
-        setIsForm(false);
       }
-    } catch (error) {
-      toast.error("🦄 Erro ao aceitar convite!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
-    }
+    } catch (error) {}
   }
   async function editConvidadoRecusar() {
     toast.info("🦄 Processando!", {
@@ -189,28 +224,16 @@ export default function DashBoardConvidado() {
         });
         setIsForm(false);
       }
-    } catch (error) {
-      toast.error("🦄 Erro ao recusar convite!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
-    }
+    } catch (error) {}
   }
   return (
     <div className="h-screen bg-no-repeat bg-[url('/digitalC.png')] bg-cover bg-center">
-      <div className="flex justify-center pt-12">
+      <div className="flex justify-center pt-16">
         <Image
           alt="Woman listing to music"
           className="object-cover"
-          height={100}
-          src="/cabecalho.png"
+          height={50}
+          src="/alianca.png"
           width={100}
         />
       </div>
@@ -243,7 +266,7 @@ export default function DashBoardConvidado() {
           </small>
         </div>
       </div>
-      <div className="flex justify-center font-bold text-xl">
+      <div className="flex justify-center font-bold text-xl mt-4">
         <p className="text-center font-bold font-convite text-4xl text-orange-300">
           {nomeNoiva} & {nomeNoivo}
         </p>
@@ -318,7 +341,7 @@ export default function DashBoardConvidado() {
       <div className="grid grid-cols-3 gap-1 pt-4">
         {confirmacaoConvite === "Pendente" && (
           <>
-            <div className="flex justify-end" onClick={onOpen}>
+            <div className="flex justify-end" onClick={aceitar.onOpen}>
               <Image
                 alt="Woman listing to music"
                 className="object-cover"
@@ -331,31 +354,45 @@ export default function DashBoardConvidado() {
         )}
         {confirmacaoConvite === "Aceite" && (
           <div className="flex justify-end">
-            <div className="flex flex-col justify-center">
-              <AiOutlineCheck className="text-4xl text-blue-500" />
-              <small className="text-blue-500">Convite Aceite</small>
-              {/* <Button
+            <div className="flex flex-col text-center">
+              <div className="flex justify-center">
+                {" "}
+                <AiOutlineCheck className="text-4xl text-blue-500" />
+              </div>
+              <small className="text-blue-500 font-bold">Convite Aceite</small>
+              <Button
+                color="warning"
+                variant="light"
+                onPress={mensagemD.onOpen}
+              >
+                <AiFillMail />
+                Felicitações
+              </Button>
+              <Button
                 color="danger"
                 variant="light"
-                onClick={editConvidadoRecusar()}
+                onPress={() => editConvidadoRecusar()}
               >
-                <AiOutlineCheck /> Recusar
-              </Button> */}
+                <AiOutlineClose /> Recusar
+              </Button>
             </div>
           </div>
         )}
         {confirmacaoConvite === "Recusado" && (
           <div className="flex justify-end">
-            <div className="flex flex-col justify-center">
-              <AiOutlineClose className="text-4xl text-red-500" />
-              <small className="text-red-500">Convite Recusado</small>
-              {/* <Button
+            <div className="flex flex-col text-center">
+              <div className="flex justify-center">
+                {" "}
+                <AiOutlineClose className="text-4xl text-red-500" />
+              </div>
+              <small className="text-red-500 font-bold">Convite Recusado</small>
+              <Button
                 color="warning"
                 variant="light"
-                onClick={editConvidadoAceitar()}
+                onPress={() => editConvidadoAceitar()}
               >
                 <AiOutlineCheck /> Aceitar
-              </Button> */}
+              </Button>
             </div>
           </div>
         )}
@@ -391,7 +428,7 @@ export default function DashBoardConvidado() {
         {" "}
         <small>NÃO EXTENSIVO A CRIANÇAS</small>
       </div>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal isOpen={aceitar.isOpen} onOpenChange={aceitar.onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -421,6 +458,47 @@ export default function DashBoardConvidado() {
                   }}
                 >
                   Aceitar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      <Modal isOpen={mensagemD.isOpen} onOpenChange={mensagemD.onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Mensagem de Felicitação
+              </ModalHeader>
+              <ModalBody>
+                <Textarea
+                  label="Felicitações"
+                  placeholder="Escreva a sua mensagen de felicitação"
+                  className="max-w-xs"
+                  value={mensagem}
+                  onValueChange={(value) => setMensagem(value)}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  color="danger"
+                  variant="light"
+                  onPress={() => {
+                    onClose();
+                  }}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  color="warning"
+                  variant="light"
+                  onPress={() => {
+                    enviarMensagem();
+                    onClose();
+                  }}
+                >
+                  Enviar
                 </Button>
               </ModalFooter>
             </>

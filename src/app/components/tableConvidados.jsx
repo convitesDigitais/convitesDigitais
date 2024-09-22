@@ -8,6 +8,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Pagination,
 } from "@nextui-org/react";
 import {
   Modal,
@@ -25,17 +26,49 @@ export default function TableConvidados({
   listaConvidados,
   openEdit,
   removeConvidado,
+  statusPagemento,
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [page, setPage] = useState(1);
   const [iDLimk, setIDLimk] = useState("");
+
+  const rowsPerPage = 10;
+  const pages = Math.ceil(listaConvidados.length / rowsPerPage);
+
+  const items = React.useMemo(() => {
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    return listaConvidados.slice(start, end);
+  }, [page, listaConvidados]);
   return (
     <>
       <div className="mt-4">
-        <Table isStriped aria-label="Example static collection table">
+        <Table
+          aria-label="Convidados Table Pagination"
+          bottomContent={
+            <div className="flex w-full justify-center">
+              <Pagination
+                isCompact
+                showControls
+                showShadow
+                color="secondary"
+                page={page}
+                total={pages}
+                onChange={(page) => setPage(page)}
+              />
+            </div>
+          }
+          classNames={{
+            wrapper: "min-h-[222px]",
+          }}
+        >
           <TableHeader>
             <TableColumn>Nome do Convidado</TableColumn>
             <TableColumn>Categoria</TableColumn>
             <TableColumn>Nome da Mesa</TableColumn>
+            <TableColumn>Acompanhantes</TableColumn>
+            <TableColumn>Mensagem</TableColumn>
             <TableColumn>Status</TableColumn>
             <TableColumn>
               <div className="flex justify-end">
@@ -43,12 +76,14 @@ export default function TableConvidados({
               </div>
             </TableColumn>
           </TableHeader>
-          <TableBody>
-            {listaConvidados.map((item) => (
+          <TableBody items={items}>
+            {(item) => (
               <TableRow key={item._id}>
                 <TableCell>{item.nomeConvidado}</TableCell>
                 <TableCell>{item.categoriaConvidado}</TableCell>
                 <TableCell>{item.mesa}</TableCell>
+                <TableCell>{item.numeroAcompanhantes}</TableCell>
+                <TableCell>{item.mensagem || "Sem Mensagem"}</TableCell>
                 <TableCell>
                   {item.status === "Pendente" && (
                     <>
@@ -89,7 +124,7 @@ export default function TableConvidados({
                   </div>
                 </TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </div>
@@ -101,10 +136,24 @@ export default function TableConvidados({
                 Link do Convidado
               </ModalHeader>
               <ModalBody>
-                <p>Copie o link abaixo e envie para o convidado</p>
-                <p>
-                  {linkPerm}/{iDLimk}
-                </p>
+                {statusPagemento === "Não Pago" ? (
+                  <>
+                    {" "}
+                    <p>
+                      O seu orçamento ainda não foi pago! Para fectuar o
+                      pagamento entre em contacto com a nossa equipa através do
+                      número: (+258) 86 228 8823
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <p>Copie o link abaixo e envie para o convidado</p>
+                    <p>
+                      {linkPerm}/{iDLimk}
+                    </p>
+                  </>
+                )}
               </ModalBody>
               <ModalFooter>
                 <Button color="warning" variant="light" onPress={onClose}>

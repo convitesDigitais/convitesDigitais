@@ -33,7 +33,7 @@ export default function DashBoard() {
   const [longitudeReligiosa, setLongitudeReligiosa] = useState("");
   const [userID, setUserID] = useState("");
   const [userName, setUserName] = useState("");
-  const [evento, setEvento] = useState("");
+  const [evento, setEvento] = useState([]);
   const [mesa, setMesa] = useState("");
   const [iD, setID] = useState("");
   const [mesaFiltro, setMesaFiltro] = useState("");
@@ -43,6 +43,7 @@ export default function DashBoard() {
   const [status, setStatus] = useState("");
   const [creator, setCreator] = useState("");
   const [copoAgua, setCopoAgua] = useState("");
+  const [statusPagemento, setStatusPagemento] = useState("");
   const [convitesGeradosS, setConvitesGeradosS] = useState("0");
   const [convitesAceitesS, setConvitesAceitesS] = useState("0");
   const [convitesRecusadosS, setConvitesRecusadosS] = useState("0");
@@ -67,7 +68,6 @@ export default function DashBoard() {
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterUser`);
       const data = await response.json();
-      console.log(data);
       data.map((item) => {
         if (item.nomeUser === userName) {
           setUserID(item._id);
@@ -92,7 +92,29 @@ export default function DashBoard() {
       var convitesPendentesVolatel = 0;
       data.map((item) => {
         if (item.creator === userID) {
-          setEvento(data);
+          setStatusPagemento(item.status);
+          setEvento([
+            {
+              copoAgua: item.copoAgua,
+              createdAt: item.createdAt,
+              creator: item.creator,
+              dataEvento: item.dataEvento,
+              enderecoIgreja: item.enderecoIgreja,
+              enderecoSalao: item.enderecoSalao,
+              horaCerimoniaCivil: item.horaCerimoniaCivil,
+              horaCerimoniaReligiosa: item.horaCerimoniaReligiosa,
+              latitudeCivil: item.latitudeCivil,
+              latitudeReligiosa: item.copoAgua,
+              longitudeCivil: item.longitudeCivil,
+              longitudeReligiosa: item.longitudeReligiosa,
+              nomeNoiva: item.nomeNoiva,
+              nomeNoivo: item.nomeNoivo,
+              status: item.status,
+              totalConvidados: item.totalConvidados,
+              updatedAt: item.updatedAt,
+              _id: item._id,
+            },
+          ]);
         }
       });
       data2.map((item) => {
@@ -144,7 +166,29 @@ export default function DashBoard() {
       var convitesPendentesVolatel = 0;
       data.map((item) => {
         if (item.creator === userID) {
-          setEvento(data);
+          setStatusPagemento(item.status);
+          setEvento([
+            {
+              copoAgua: item.copoAgua,
+              createdAt: item.createdAt,
+              creator: item.creator,
+              dataEvento: item.dataEvento,
+              enderecoIgreja: item.enderecoIgreja,
+              enderecoSalao: item.enderecoSalao,
+              horaCerimoniaCivil: item.horaCerimoniaCivil,
+              horaCerimoniaReligiosa: item.horaCerimoniaReligiosa,
+              latitudeCivil: item.latitudeCivil,
+              latitudeReligiosa: item.copoAgua,
+              longitudeCivil: item.longitudeCivil,
+              longitudeReligiosa: item.longitudeReligiosa,
+              nomeNoiva: item.nomeNoiva,
+              nomeNoivo: item.nomeNoivo,
+              status: item.status,
+              totalConvidados: item.totalConvidados,
+              updatedAt: item.updatedAt,
+              _id: item._id,
+            },
+          ]);
         }
       });
       data2.map((item) => {
@@ -426,7 +470,6 @@ export default function DashBoard() {
     });
   }
   async function removeConvidado(id) {
-    setUpdateWindow("no");
     toast.info("🦄 Removendo convidado!", {
       position: "top-right",
       autoClose: 5000,
@@ -743,6 +786,7 @@ export default function DashBoard() {
               listaConvidados={listaConvidados}
               openEdit={openEdit}
               removeConvidado={removeConvidado}
+              statusPagemento={statusPagemento}
             />
           </>
         )}

@@ -39,7 +39,7 @@ export default function DashBoardImage({
       });
   }, [evento]);
   return (
-    <div>
+    <div key={"323"}>
       <div className="bg-no-repeat bg-[url('/dashFundo.jpg')] bg-cover bg-center">
         <div className="text-center p-12 backdrop-blur-sm bg-white/30">
           <p className="text-4xl font-bold text-center">Dados do Evento</p>
@@ -47,26 +47,31 @@ export default function DashBoardImage({
             <>
               {evento.map((item) => (
                 <>
-                  <div key={item.dataEvento}>
+                  <div key={item.nomeNoiva}>
                     <div className="grid grid-cols-1 md:flex justify-center gap-1 mt-4">
                       <div className="flex justify-center md:justify-end">
-                        <p className="text-4xl font-bold">{item.nomeNoiva}</p>
+                        <p className="text-4xl font-bold" key={item.nomeNoiva}>
+                          {item.nomeNoiva}
+                        </p>
                       </div>
                       <div>
                         <p className="text-4xl font-bold">&</p>
                       </div>
                       <div className="flex justify-center md:justify-start">
-                        <p className="text-4xl font-bold">{item.nomeNoivo}</p>
+                        <p className="text-4xl font-bold" key={item.nomeNoivo}>
+                          {item.nomeNoivo}
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-2" key={item.dataEvento}>
                     <p className="text-xl font-bold">
                       {item.dataEvento.substring(8, 10)} de{" "}
-                      {meses[item.dataEvento.substring(5, 7)]} de{" "}
+                      {meses[item.dataEvento.substring(5, 7) - 1]} de{" "}
                       {item.dataEvento.substring(0, 4)}
                     </p>
-                    <p className="font-bold">{item.enderecoIgreja}</p>
+                    <p className="font-bold">Igreja: {item.enderecoIgreja}</p>
+                    <p className="font-bold">Salão: {item.enderecoSalao}</p>
                   </div>
                 </>
               ))}
