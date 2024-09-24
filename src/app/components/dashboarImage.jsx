@@ -104,7 +104,7 @@ export default function DashBoardImage({
             ) : (
               <>
                 <Button color="danger" variant="light" onClick={dadosEvento}>
-                  Edicionar Dados do Evento
+                  Adicionar Dados do Evento
                 </Button>{" "}
               </>
             )}
