@@ -63,6 +63,7 @@ export default function DashBoardConvidado() {
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterConvidados`, {
         cache: "no-store",
+        next: { revalidate: 30 },
       });
       const data = await response.json();
       data.map((item) => {
@@ -86,6 +87,7 @@ export default function DashBoardConvidado() {
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterEvento`, {
         cache: "no-store",
+        next: { revalidate: 30 },
       });
       const data = await response.json();
       data.map((item) => {

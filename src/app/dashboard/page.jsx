@@ -67,7 +67,8 @@ export default function DashBoard() {
     }
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterUser`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const data = await response.json();
       data.map((item) => {
@@ -81,16 +82,20 @@ export default function DashBoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterEvento`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response2 = await fetch(`/api/obterCategorias`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response3 = await fetch(`/api/obterMesas`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response4 = await fetch(`/api/obterConvidados`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const data = await response.json();
       const data2 = await response2.json();
@@ -163,16 +168,20 @@ export default function DashBoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/obterEvento`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response2 = await fetch(`/api/obterCategorias`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response3 = await fetch(`/api/obterMesas`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const response4 = await fetch(`/api/obterConvidados`, {
-        cache: "no-store",
+        cache: 'no-store',
+        next: { revalidate: 30 },
       });
       const data = await response.json();
       const data2 = await response2.json();
