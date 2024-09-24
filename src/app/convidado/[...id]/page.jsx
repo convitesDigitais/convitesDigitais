@@ -61,7 +61,9 @@ export default function DashBoardConvidado() {
   const { id } = params;
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterConvidados`);
+      const response = await fetch(`/api/obterConvidados`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       data.map((item) => {
         if (item._id === id[0]) {
@@ -82,7 +84,9 @@ export default function DashBoardConvidado() {
   }, [id]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`);
+      const response = await fetch(`/api/obterEvento`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       data.map((item) => {
         if (item.creator === creatorID) {

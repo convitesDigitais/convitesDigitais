@@ -66,7 +66,9 @@ export default function DashBoard() {
       setUserName(localStorage.getItem("nomeUser") || "");
     }
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterUser`);
+      const response = await fetch(`/api/obterUser`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       data.map((item) => {
         if (item.nomeUser === userName) {
@@ -78,10 +80,18 @@ export default function DashBoard() {
   }, [userName]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`);
-      const response2 = await fetch(`/api/obterCategorias`);
-      const response3 = await fetch(`/api/obterMesas`);
-      const response4 = await fetch(`/api/obterConvidados`);
+      const response = await fetch(`/api/obterEvento`, {
+        cache: "no-store",
+      });
+      const response2 = await fetch(`/api/obterCategorias`, {
+        cache: "no-store",
+      });
+      const response3 = await fetch(`/api/obterMesas`, {
+        cache: "no-store",
+      });
+      const response4 = await fetch(`/api/obterConvidados`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       const data2 = await response2.json();
       const data3 = await response3.json();
@@ -152,10 +162,18 @@ export default function DashBoard() {
   }, [userID]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`);
-      const response2 = await fetch(`/api/obterCategorias`);
-      const response3 = await fetch(`/api/obterMesas`);
-      const response4 = await fetch(`/api/obterConvidados`);
+      const response = await fetch(`/api/obterEvento`, {
+        cache: "no-store",
+      });
+      const response2 = await fetch(`/api/obterCategorias`, {
+        cache: "no-store",
+      });
+      const response3 = await fetch(`/api/obterMesas`, {
+        cache: "no-store",
+      });
+      const response4 = await fetch(`/api/obterConvidados`, {
+        cache: "no-store",
+      });
       const data = await response.json();
       const data2 = await response2.json();
       const data3 = await response3.json();
