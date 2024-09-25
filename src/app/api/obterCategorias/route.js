@@ -1,9 +1,11 @@
 import mongooseConnect from "../../../../lib/mongodb";
 import CategoriaConvidado from "../../../../models/categoriaConvidado";
 
-const handler = async () => {
+const handler = async (req) => {
   try {
     await mongooseConnect();
+    const body = await req.json(); // 👈
+    console.log(body);
 
     const prompt = await CategoriaConvidado.find();
     if (!prompt) return new Response("Not found", { status: 404 });
