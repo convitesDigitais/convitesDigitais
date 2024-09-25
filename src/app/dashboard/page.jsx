@@ -73,7 +73,7 @@ export default function DashBoard() {
       setUserName(localStorage.getItem("nomeUser") || "");
     }
     const fetchPosts = async () => {
-      const data = await fetch("https://www.gestaoconvites.com/api/obterUser", {
+      const data = await fetch("/api/obterUser", {
         cache: "no-store",
       });
       const user = await data.json();
@@ -87,30 +87,18 @@ export default function DashBoard() {
   }, [userName]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await fetch(
-        "https://www.gestaoconvites.com/api/obterEvento",
-        {
-          cache: "no-store",
-        }
-      );
-      const data1 = await fetch(
-        "https://www.gestaoconvites.com/api/obterConvidados",
-        {
-          cache: "no-store",
-        }
-      );
-      const data2 = await fetch(
-        "https://www.gestaoconvites.com/api/obterCategorias",
-        {
-          cache: "no-store",
-        }
-      );
-      const data3 = await fetch(
-        "https://www.gestaoconvites.com/api/obterMesas",
-        {
-          cache: "no-store",
-        }
-      );
+      const data = await fetch("/api/obterEvento", {
+        cache: "no-store",
+      });
+      const data1 = await fetch("/api/obterConvidados", {
+        cache: "no-store",
+      });
+      const data2 = await fetch("/api/obterCategorias", {
+        cache: "no-store",
+      });
+      const data3 = await fetch("/api/obterMesas", {
+        cache: "no-store",
+      });
       const evento = await data.json();
       const convidados = await data1.json();
       const categorias = await data2.json();
@@ -181,30 +169,18 @@ export default function DashBoard() {
   }, [userID]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await fetch(
-        "https://www.gestaoconvites.com/api/obterEvento",
-        {
-          cache: "no-store",
-        }
-      );
-      const data1 = await fetch(
-        "https://www.gestaoconvites.com/api/obterConvidados",
-        {
-          cache: "no-store",
-        }
-      );
-      const data2 = await fetch(
-        "https://www.gestaoconvites.com/api/obterCategorias",
-        {
-          cache: "no-store",
-        }
-      );
-      const data3 = await fetch(
-        "https://www.gestaoconvites.com/api/obterMesas",
-        {
-          cache: "no-store",
-        }
-      );
+      const data = await fetch("/api/obterEvento", {
+        cache: "no-store",
+      });
+      const data1 = await fetch("/api/obterConvidados", {
+        cache: "no-store",
+      });
+      const data2 = await fetch("/api/obterCategorias", {
+        cache: "no-store",
+      });
+      const data3 = await fetch("/api/obterMesas", {
+        cache: "no-store",
+      });
       const evento = await data.json();
       const convidados = await data1.json();
       const categorias = await data2.json();

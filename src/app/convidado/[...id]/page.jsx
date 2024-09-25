@@ -62,12 +62,9 @@ export default function DashBoardConvidado() {
   const { id } = params;
   useEffect(() => {
     const fetchPosts = async () => {
-      const data1 = await fetch(
-        "https://www.gestaoconvites.com/api/obterConvidados",
-        {
-          cache: "no-store",
-        }
-      );
+      const data1 = await fetch("/api/obterConvidados", {
+        cache: "no-store",
+      });
       const convidados = await data1.json();
       convidados.map((item) => {
         if (item._id === id[0]) {
@@ -88,12 +85,9 @@ export default function DashBoardConvidado() {
   }, [id]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await fetch(
-        "https://www.gestaoconvites.com/api/obterEvento",
-        {
-          cache: "no-store",
-        }
-      );
+      const data = await fetch("/api/obterEvento", {
+        cache: "no-store",
+      });
       const evento = await data.json();
       evento.map((item) => {
         if (item.creator === creatorID) {
