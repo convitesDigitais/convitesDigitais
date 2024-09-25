@@ -63,7 +63,7 @@ export default function DashBoardConvidado() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data1 = await fetch("/api/obterConvidados", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const convidados = await data1.json();
       convidados.map((item) => {
@@ -86,7 +86,7 @@ export default function DashBoardConvidado() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await fetch("/api/obterEvento", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const evento = await data.json();
       evento.map((item) => {

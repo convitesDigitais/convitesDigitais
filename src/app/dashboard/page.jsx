@@ -74,7 +74,7 @@ export default function DashBoard() {
     }
     const fetchPosts = async () => {
       const data = await fetch("/api/obterUser", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const user = await data.json();
       user.map((item) => {
@@ -88,16 +88,16 @@ export default function DashBoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await fetch("/api/obterEvento", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data1 = await fetch("/api/obterConvidados", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data2 = await fetch("/api/obterCategorias", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data3 = await fetch("/api/obterMesas", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const evento = await data.json();
       const convidados = await data1.json();
@@ -170,16 +170,16 @@ export default function DashBoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await fetch("/api/obterEvento", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data1 = await fetch("/api/obterConvidados", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data2 = await fetch("/api/obterCategorias", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const data3 = await fetch("/api/obterMesas", {
-        cache: "no-store",
+        cache: "no-cache",
       });
       const evento = await data.json();
       const convidados = await data1.json();
