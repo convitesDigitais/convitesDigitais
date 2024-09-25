@@ -3,6 +3,7 @@ import { toast, Bounce } from "react-toastify";
 import { Image, Link, Textarea } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { getConvidados, getEventos } from "../../../../lib/evento";
 import { AiOutlineCheck, AiOutlineClose, AiFillMail } from "react-icons/ai";
 import {
   Modal,
@@ -61,12 +62,8 @@ export default function DashBoardConvidado() {
   const { id } = params;
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterConvidados`, {
-        cache: "no-store",
-        next: { revalidate: 30 },
-      });
-      const data = await response.json();
-      data.map((item) => {
+      const convidados = await getConvidados();
+      convidados.map((item) => {
         if (item._id === id[0]) {
           console.log(item);
           setID(item._id);
@@ -85,12 +82,8 @@ export default function DashBoardConvidado() {
   }, [id]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`, {
-        cache: "no-store",
-        next: { revalidate: 30 },
-      });
-      const data = await response.json();
-      data.map((item) => {
+      const evento = await getEventos();
+      evento.map((item) => {
         if (item.creator === creatorID) {
           setDataEvento(item.dataEvento);
           setHoraCerimoniaReligiosa(item.horaCerimoniaReligiosa);

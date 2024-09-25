@@ -1,6 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import NavBar from "../components/navBar";
+import {
+  getUser,
+  getEventos,
+  getConvidados,
+  getCategorias,
+  getMesas,
+} from "../../../lib/evento";
 import DashBoardImage from "../components/dashboarImage";
 import TableConvidados from "../components/tableConvidados";
 import AccoesConvites from "../components/accoesConvites";
@@ -66,12 +73,8 @@ export default function DashBoard() {
       setUserName(localStorage.getItem("nomeUser") || "");
     }
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterUser`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const data = await response.json();
-      data.map((item) => {
+      const user = await getUser();
+      user.map((item) => {
         if (item.nomeUser === userName) {
           setUserID(item._id);
         }
@@ -81,31 +84,15 @@ export default function DashBoard() {
   }, [userName]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response2 = await fetch(`/api/obterCategorias`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response3 = await fetch(`/api/obterMesas`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response4 = await fetch(`/api/obterConvidados`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const data = await response.json();
-      const data2 = await response2.json();
-      const data3 = await response3.json();
-      const data4 = await response4.json();
+      const evento = await getEventos();
+      const convidados = await getConvidados();
+      const categorias = await getCategorias();
+      const mesas = await getMesas();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
       var convitesPendentesVolatel = 0;
-      data.map((item) => {
+      evento.map((item) => {
         if (item.creator === userID) {
           setStatusPagemento(item.status);
           setEvento([
@@ -132,17 +119,17 @@ export default function DashBoard() {
           ]);
         }
       });
-      data2.map((item) => {
+      categorias.map((item) => {
         if (item.creator === userID) {
           categoriasVolatel.push(item);
         }
       });
-      data3.map((item) => {
+      mesas.map((item) => {
         if (item.creator === userID) {
           mesasVolatel.push(item);
         }
       });
-      data4.map((item) => {
+      convidados.map((item) => {
         if (item.creator === userID) {
           convidadosVolatel.push(item);
           convitesGeradosVolatel += 1;
@@ -167,31 +154,15 @@ export default function DashBoard() {
   }, [userID]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/obterEvento`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response2 = await fetch(`/api/obterCategorias`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response3 = await fetch(`/api/obterMesas`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const response4 = await fetch(`/api/obterConvidados`, {
-        cache: 'no-store',
-        next: { revalidate: 30 },
-      });
-      const data = await response.json();
-      const data2 = await response2.json();
-      const data3 = await response3.json();
-      const data4 = await response4.json();
+      const evento = await getEventos();
+      const convidados = await getConvidados();
+      const categorias = await getCategorias();
+      const mesas = await getMesas();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
       var convitesPendentesVolatel = 0;
-      data.map((item) => {
+      evento.map((item) => {
         if (item.creator === userID) {
           setStatusPagemento(item.status);
           setEvento([
@@ -218,17 +189,17 @@ export default function DashBoard() {
           ]);
         }
       });
-      data2.map((item) => {
+      categorias.map((item) => {
         if (item.creator === userID) {
           categoriasVolatel.push(item);
         }
       });
-      data3.map((item) => {
+      mesas.map((item) => {
         if (item.creator === userID) {
           mesasVolatel.push(item);
         }
       });
-      data4.map((item) => {
+      convidados.map((item) => {
         if (item.creator === userID) {
           convidadosVolatel.push(item);
           convitesGeradosVolatel += 1;
