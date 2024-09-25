@@ -1,13 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import NavBar from "../components/navBar";
-// import {
-//   getUser,
-//   getEventos,
-//   getConvidados,
-//   getCategorias,
-//   getMesas,
-// } from "../evento";
 import DashBoardImage from "../components/dashboarImage";
 import TableConvidados from "../components/tableConvidados";
 import AccoesConvites from "../components/accoesConvites";
@@ -73,11 +66,12 @@ export default function DashBoard() {
       setUserName(localStorage.getItem("nomeUser") || "");
     }
     const fetchPosts = async () => {
-      const data = await fetch("/api/obterUser", {
-        cache: "no-cache",
+      const response = await fetch(`/api/obterUser`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const user = await data.json();
-      user.map((item) => {
+      const data = await response.json();
+      data.map((item) => {
         if (item.nomeUser === userName) {
           setUserID(item._id);
         }
@@ -87,27 +81,32 @@ export default function DashBoard() {
   }, [userName]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await fetch("/api/obterEvento", {
-        cache: "no-cache",
+      const response = await fetch(`/api/obterEvento`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data1 = await fetch("/api/obterConvidados", {
-        cache: "no-cache",
+      const response2 = await fetch(`/api/obterCategorias`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data2 = await fetch("/api/obterCategorias", {
-        cache: "no-cache",
+      const response3 = await fetch(`/api/obterMesas`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data3 = await fetch("/api/obterMesas", {
-        cache: "no-cache",
+      const response4 = await fetch(`/api/obterConvidados`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const evento = await data.json();
-      const convidados = await data1.json();
-      const categorias = await data2.json();
-      const mesas = await data3.json();
+
+      const data = await response.json();
+      const data2 = await response2.json();
+      const data3 = await response3.json();
+      const data4 = await response4.json();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
       var convitesPendentesVolatel = 0;
-      evento.map((item) => {
+      data.map((item) => {
         if (item.creator === userID) {
           setStatusPagemento(item.status);
           setEvento([
@@ -134,17 +133,17 @@ export default function DashBoard() {
           ]);
         }
       });
-      categorias.map((item) => {
+      data2.map((item) => {
         if (item.creator === userID) {
           categoriasVolatel.push(item);
         }
       });
-      mesas.map((item) => {
+      data3.map((item) => {
         if (item.creator === userID) {
           mesasVolatel.push(item);
         }
       });
-      convidados.map((item) => {
+      data4.map((item) => {
         if (item.creator === userID) {
           convidadosVolatel.push(item);
           convitesGeradosVolatel += 1;
@@ -169,27 +168,31 @@ export default function DashBoard() {
   }, [userID]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await fetch("/api/obterEvento", {
-        cache: "no-cache",
+      const response = await fetch(`/api/obterEvento`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data1 = await fetch("/api/obterConvidados", {
-        cache: "no-cache",
+      const response2 = await fetch(`/api/obterCategorias`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data2 = await fetch("/api/obterCategorias", {
-        cache: "no-cache",
+      const response3 = await fetch(`/api/obterMesas`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const data3 = await fetch("/api/obterMesas", {
-        cache: "no-cache",
+      const response4 = await fetch(`/api/obterConvidados`, {
+        cache: "no-store",
+        method: "GET",
       });
-      const evento = await data.json();
-      const convidados = await data1.json();
-      const categorias = await data2.json();
-      const mesas = await data3.json();
+      const data = await response.json();
+      const data2 = await response2.json();
+      const data3 = await response3.json();
+      const data4 = await response4.json();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
       var convitesPendentesVolatel = 0;
-      evento.map((item) => {
+      data.map((item) => {
         if (item.creator === userID) {
           setStatusPagemento(item.status);
           setEvento([
@@ -216,17 +219,17 @@ export default function DashBoard() {
           ]);
         }
       });
-      categorias.map((item) => {
+      data2.map((item) => {
         if (item.creator === userID) {
           categoriasVolatel.push(item);
         }
       });
-      mesas.map((item) => {
+      data3.map((item) => {
         if (item.creator === userID) {
           mesasVolatel.push(item);
         }
       });
-      convidados.map((item) => {
+      data4.map((item) => {
         if (item.creator === userID) {
           convidadosVolatel.push(item);
           convitesGeradosVolatel += 1;
