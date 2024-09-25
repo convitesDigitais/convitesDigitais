@@ -64,6 +64,7 @@ export default function DashBoardConvidado() {
     const fetchPosts = async () => {
       const data1 = await fetch("/api/obterConvidados", {
         cache: "no-cache",
+        method: "GET",
       });
       const convidados = await data1.json();
       convidados.map((item) => {
@@ -87,6 +88,7 @@ export default function DashBoardConvidado() {
     const fetchPosts = async () => {
       const data = await fetch("/api/obterEvento", {
         cache: "no-cache",
+        method: "GET",
       });
       const evento = await data.json();
       evento.map((item) => {
