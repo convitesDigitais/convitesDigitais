@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import NavBar from "../components/navBar";
-import {
-  getUser,
-  getEventos,
-  getConvidados,
-  getCategorias,
-  getMesas,
-} from "../evento";
+// import {
+//   getUser,
+//   getEventos,
+//   getConvidados,
+//   getCategorias,
+//   getMesas,
+// } from "../evento";
 import DashBoardImage from "../components/dashboarImage";
 import TableConvidados from "../components/tableConvidados";
 import AccoesConvites from "../components/accoesConvites";
@@ -73,7 +73,10 @@ export default function DashBoard() {
       setUserName(localStorage.getItem("nomeUser") || "");
     }
     const fetchPosts = async () => {
-      const user = await getUser();
+      const data = await fetch("https://www.gestaoconvites.com/api/obterUser", {
+        cache: "no-store",
+      });
+      const user = await data.json();
       user.map((item) => {
         if (item.nomeUser === userName) {
           setUserID(item._id);
@@ -84,10 +87,34 @@ export default function DashBoard() {
   }, [userName]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const evento = await getEventos();
-      const convidados = await getConvidados();
-      const categorias = await getCategorias();
-      const mesas = await getMesas();
+      const data = await fetch(
+        "https://www.gestaoconvites.com/api/obterEvento",
+        {
+          cache: "no-store",
+        }
+      );
+      const data1 = await fetch(
+        "https://www.gestaoconvites.com/api/obterConvidados",
+        {
+          cache: "no-store",
+        }
+      );
+      const data2 = await fetch(
+        "https://www.gestaoconvites.com/api/obterCategorias",
+        {
+          cache: "no-store",
+        }
+      );
+      const data3 = await fetch(
+        "https://www.gestaoconvites.com/api/obterMesas",
+        {
+          cache: "no-store",
+        }
+      );
+      const evento = await data.json();
+      const convidados = await data1.json();
+      const categorias = await data2.json();
+      const mesas = await data3.json();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
@@ -154,10 +181,34 @@ export default function DashBoard() {
   }, [userID]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const evento = await getEventos();
-      const convidados = await getConvidados();
-      const categorias = await getCategorias();
-      const mesas = await getMesas();
+      const data = await fetch(
+        "https://www.gestaoconvites.com/api/obterEvento",
+        {
+          cache: "no-store",
+        }
+      );
+      const data1 = await fetch(
+        "https://www.gestaoconvites.com/api/obterConvidados",
+        {
+          cache: "no-store",
+        }
+      );
+      const data2 = await fetch(
+        "https://www.gestaoconvites.com/api/obterCategorias",
+        {
+          cache: "no-store",
+        }
+      );
+      const data3 = await fetch(
+        "https://www.gestaoconvites.com/api/obterMesas",
+        {
+          cache: "no-store",
+        }
+      );
+      const evento = await data.json();
+      const convidados = await data1.json();
+      const categorias = await data2.json();
+      const mesas = await data3.json();
       var convitesGeradosVolatel = 0;
       var convitesAceitesVolatel = 0;
       var convitesRecusadosVolatel = 0;
