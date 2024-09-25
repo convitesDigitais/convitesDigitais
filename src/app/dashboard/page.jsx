@@ -7,7 +7,7 @@ import {
   getConvidados,
   getCategorias,
   getMesas,
-} from "../../../lib/evento";
+} from "../evento";
 import DashBoardImage from "../components/dashboarImage";
 import TableConvidados from "../components/tableConvidados";
 import AccoesConvites from "../components/accoesConvites";

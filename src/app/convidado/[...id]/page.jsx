@@ -3,7 +3,7 @@ import { toast, Bounce } from "react-toastify";
 import { Image, Link, Textarea } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { getConvidados, getEventos } from "../../../../lib/evento";
+import { getConvidados, getEventos } from "../../evento";
 import { AiOutlineCheck, AiOutlineClose, AiFillMail } from "react-icons/ai";
 import {
   Modal,
