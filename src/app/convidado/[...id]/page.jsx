@@ -419,7 +419,7 @@ export default function DashBoardConvidado() {
       </div>
       <div className="text-center">
         {" "}
-        <small>Válido para {numeroAcompanhantes} pessoa(s)</small>
+        <small>Acompanhante: {numeroAcompanhantes} pessoa(s)</small>
         <br />
         <small className="font-bold">
           NB: Por favor, confirme a sua presença até o dia 15 de Novembro.
