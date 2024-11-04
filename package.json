@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.6",
     "@react-google-maps/api": "^2.19.3",
+    "@vis.gl/react-google-maps": "^1.4.0",
     "axios": "^1.7.7",
     "check-password-strength": "^2.0.10",
     "framer-motion": "^11.5.4",

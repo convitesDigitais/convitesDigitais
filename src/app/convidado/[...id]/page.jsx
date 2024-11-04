@@ -405,7 +405,7 @@ export default function DashBoardConvidado() {
           </div>
         )}
         <div className="flex justify-center pt-4">
-          <Link href="/mapIgreja">
+          <Link href={`/mapIgreja/${id}`}>
             <Image
               alt="Woman listing to music"
               className="object-cover"
@@ -416,7 +416,7 @@ export default function DashBoardConvidado() {
           </Link>
         </div>
         <div>
-          <Link href="/mapSalao">
+          <Link href={`/mapSalao/${id}`}>
             {" "}
             <Image
               alt="Woman listing to music"
