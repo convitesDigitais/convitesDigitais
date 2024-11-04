@@ -247,35 +247,24 @@ export default function DashBoardConvidado() {
       </div>
       <div className="flex flex-col justify-center pt-4">
         <div className="text-center">
-          <small className="text-center font-semibold">
-            &quot;É pela certeza do nosso amor e pela confiança nos
+          <small className="text-center font-semibold font-serif">
+            &quot;Portanto, deixará o homem o
           </small>
         </div>
         <div className="text-center">
-          <small className="text-center font-semibold">
-            planos de Deus que juntamos as nossas mãos e as nossas
+          <small className="text-center font-semibold font-serif">
+            seu pai e a sua mãe, e apegar-se-á à sua mulher,
           </small>
         </div>
         <div className="text-center">
-          <small className="text-center font-semibold">
-            vidas para iniciarmos a mais sublime das caminhadas,
-          </small>
-        </div>
-        <div className="text-center">
-          {" "}
-          <small className="text-center font-semibold">
-            onde estaremos selando diante de Deus aquilo que já é
-          </small>
-        </div>
-        <div className="text-center">
-          {" "}
-          <small className="text-center font-semibold">
-            consumado em nossos corações.&quot;
+          <small className="text-center font-semibold font-serif">
+            e serão ambos uma carne (Gênesis 2:24)&quot;
           </small>
         </div>
       </div>
+      <br />
       <div className="flex justify-center font-bold text-xl mt-4">
-        <p className="text-center font-bold font-convite text-4xl text-orange-300">
+        <p className="text-center font-bold font-convite text-5xl text-orange-300">
           {nomeNoiva} & {nomeNoivo}
         </p>
       </div>
@@ -285,8 +274,8 @@ export default function DashBoardConvidado() {
           TÊM A HONRA DE CONVIDAR EXMO (A) SR. (A)
         </small>
       </div>
-      <div className="flex justify-center font-bold text-xl">
-        <p className="text-center font-bold font-convite text-2xl">
+      <div className="flex justify-center font-bold">
+        <p className="text-center font-bold font-convite text-3xl">
           {nomeConvidado}
         </p>
       </div>
@@ -303,7 +292,7 @@ export default function DashBoardConvidado() {
         {" "}
         <div>
           {" "}
-          <p className="text-center font-bold text-4xl text-orange-300">
+          <p className="text-center font-bold text-5xl text-orange-300">
             {dataEvento.substring(8, 10)}
           </p>
         </div>
@@ -431,6 +420,10 @@ export default function DashBoardConvidado() {
       <div className="text-center">
         {" "}
         <small>Válido para {numeroAcompanhantes} pessoa(s)</small>
+        <br />
+        <small className="font-bold">
+          NB: Por favor, confirme a sua presença até o dia 15 de Novembro.
+        </small>
       </div>
       <div className="text-center">
         {" "}
