@@ -303,7 +303,7 @@ export default function DashBoardConvidado() {
           </div>
           <div>
             <p className="text-center font-semibold">
-              {meses[dataEvento.substring(5, 7)]} de{" "}
+              {meses[dataEvento.substring(5, 7) - 1]} de{" "}
               {dataEvento.substring(0, 4)}
             </p>
           </div>
