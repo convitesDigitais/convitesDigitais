@@ -236,7 +236,7 @@ export default function ConviteModelo1() {
   }
   return (
     <div className="h-screen bg-no-repeat bg-[url('/bgConvites.png')] bg-cover bg-center">
-      <div className="flex justify-center pt-16">
+      <div className="flex justify-center pt-6">
         <Image
           alt="Woman listing to music"
           className="object-cover"
@@ -248,17 +248,17 @@ export default function ConviteModelo1() {
       <div className="flex flex-col justify-center pt-4">
         <div className="text-center">
           <small className="text-center font-semibold font-serif">
-            &quot;Portanto, deixará o homem o
+            &quot;Portanto, deixará o homem o seu pai e a sua mãe, e
           </small>
         </div>
         <div className="text-center">
           <small className="text-center font-semibold font-serif">
-            seu pai e a sua mãe, e apegar-se-á à sua mulher,
+            apegar-se-á à sua mulher, e serão ambos uma carne.
           </small>
         </div>
         <div className="text-center">
           <small className="text-center font-semibold font-serif">
-            e serão ambos uma carne (Gênesis 2:24)&quot;
+            (Gênesis 2:24)&quot;
           </small>
         </div>
       </div>
@@ -268,7 +268,7 @@ export default function ConviteModelo1() {
           Com a benção de Deus e de seus pais:
         </small>
       </div>
-      <div className="grid grid-cols-2 gap-1 pt-4">
+      <div className="grid grid-cols-2 gap-1">
         <div className="text-center">
           <p className="text-center font-serif text-sm">Constantino Paulo</p>
           <p className="text-center font-serif text-sm">
@@ -331,27 +331,40 @@ export default function ConviteModelo1() {
       </div>
       <div className="text-center pt-2">
         {" "}
+        <small className="text-center font-bold">
+          Cerimónia Civil - {horaCerimoniaCivil}
+        </small>
+      </div>
+      <div className="text-center">
+        {" "}
         <small className="text-center font-semibold">
+          Palácio dos Casamentos
+        </small>
+      </div>
+      <div className="text-center">
+        {" "}
+        <small className="text-center font-bold">
           Cerimónia Religiosa - {horaCerimoniaReligiosa}
         </small>
       </div>
       <div className="text-center">
         {" "}
-        <p className="text-center font-bold">{enderecoIgreja}</p>
+        <small className="text-center font-semibold">{enderecoIgreja}</small>
       </div>
       <div className="text-center">
         {" "}
-        <small className="text-center font-semibold">
-          Cerimónia Civil - {horaCerimoniaCivil} | Copo de água - {copoAgua}
+        <small className="text-center font-bold">
+          Copo de água - {copoAgua}
         </small>
       </div>
       <div className="flex justify-center gap-2">
         {" "}
         <div>
           {" "}
-          <p className="text-center font-bold">{enderecoSalao}</p>
+          <small className="text-center font-semibold">{enderecoSalao}</small>
         </div>
       </div>
+
       <div className="grid grid-cols-3 gap-1 pt-4">
         {confirmacaoConvite === "Pendente" && (
           <>
