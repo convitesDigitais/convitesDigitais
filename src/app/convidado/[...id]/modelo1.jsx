@@ -456,8 +456,8 @@ export default function ConviteModelo1() {
       <br />
       <div className="text-center">
         {" "}
-        <small>Acompanhante: {numeroAcompanhantes} pessoa(s)</small>
-        <br />
+        {/* <small>Acompanhante: {numeroAcompanhantes} pessoa(s)</small> */}
+        {/* <br /> */}
         <small className="font-bold">
           NB: Por favor, confirme a sua presença até o dia 15 de Novembro.
         </small>
