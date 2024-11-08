@@ -235,7 +235,7 @@ export default function ConviteModelo1() {
     } catch (error) {}
   }
   return (
-    <div className="h-screen bg-no-repeat bg-[url('/bgConvites.png')] bg-cover bg-center">
+    <div className="bg-no-repeat bg-[url('/bgConvites.png')] bg-cover bg-center">
       <div className="flex justify-center pt-6">
         <Image
           alt="Woman listing to music"
@@ -362,7 +362,11 @@ export default function ConviteModelo1() {
         <div>
           {" "}
           <small className="text-center font-semibold">
-            {enderecoSalao} (Mesa {mesa})
+            {enderecoSalao} (
+            <small className="font-bold text-orange-300 text-sm">
+              Mesa: {mesa}
+            </small>
+            )
           </small>
         </div>
       </div>
@@ -449,6 +453,7 @@ export default function ConviteModelo1() {
           </Link>
         </div>
       </div>
+      <br />
       <div className="text-center">
         {" "}
         <small>Acompanhante: {numeroAcompanhantes} pessoa(s)</small>
@@ -457,7 +462,7 @@ export default function ConviteModelo1() {
           NB: Por favor, confirme a sua presença até o dia 15 de Novembro.
         </small>
       </div>
-      <div className="text-center">
+      <div className="text-center pb-16">
         {" "}
         <small>NÃO EXTENSIVO A CRIANÇAS</small>
       </div>

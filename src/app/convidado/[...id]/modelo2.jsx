@@ -235,7 +235,7 @@ export default function ConviteModelo2() {
     } catch (error) {}
   }
   return (
-    <div className="h-screen bg-no-repeat bg-[url('/digitalC.png')] bg-cover bg-center">
+    <div className="h-screen bg-no-repeat bg-[url('/digitalC.png')] bg-fixed bg-center">
       <div className="flex justify-center pt-16">
         <Image
           alt="Woman listing to music"
