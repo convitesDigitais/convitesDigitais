@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@nextui-org/react";
 import { AiOutlinePlus, AiOutlineCaretLeft } from "react-icons/ai";
+import { toast, Bounce } from "react-toastify";
 export default function AccoesConvites({
   setIsForm,
   setIsAddForm,
@@ -8,13 +9,31 @@ export default function AccoesConvites({
   setIsAddMesaForm,
   isForm,
   setIsAddInfoForm,
+  addConvidado,
 }) {
   function convidados() {
-    setIsForm(true);
-    setIsAddForm(true);
-    setIsAddCategoriaForm(false);
-    setIsAddMesaForm(false);
-    setIsAddInfoForm(false);
+    if (addConvidado) {
+      toast.info(
+        "🦄 Atingiu o limite dos convites disponiveis no seu orçamento!",
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        }
+      );
+    } else {
+      setIsForm(true);
+      setIsAddForm(true);
+      setIsAddCategoriaForm(false);
+      setIsAddMesaForm(false);
+      setIsAddInfoForm(false);
+    }
   }
   function categoria() {
     setIsForm(true);

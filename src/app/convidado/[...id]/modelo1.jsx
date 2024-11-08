@@ -332,7 +332,7 @@ export default function ConviteModelo1() {
       <div className="text-center pt-2">
         {" "}
         <small className="text-center font-bold">
-          Cerimónia Civil - {horaCerimoniaCivil}
+          Cerimónia Civil - {horaCerimoniaCivil}h
         </small>
       </div>
       <div className="text-center">
@@ -344,7 +344,7 @@ export default function ConviteModelo1() {
       <div className="text-center">
         {" "}
         <small className="text-center font-bold">
-          Cerimónia Religiosa - {horaCerimoniaReligiosa}
+          Cerimónia Religiosa - {horaCerimoniaReligiosa}h
         </small>
       </div>
       <div className="text-center">
@@ -354,14 +354,16 @@ export default function ConviteModelo1() {
       <div className="text-center">
         {" "}
         <small className="text-center font-bold">
-          Copo de água - {copoAgua}
+          Copo de água - {copoAgua}h
         </small>
       </div>
       <div className="flex justify-center gap-2">
         {" "}
         <div>
           {" "}
-          <small className="text-center font-semibold">{enderecoSalao}</small>
+          <small className="text-center font-semibold">
+            {enderecoSalao} (Mesa {mesa})
+          </small>
         </div>
       </div>
 

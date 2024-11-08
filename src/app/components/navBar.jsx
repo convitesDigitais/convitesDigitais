@@ -7,15 +7,14 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo.jsx";
+import Image from "next/image";
 import { AiOutlineLogout } from "react-icons/ai";
 
 export default function NavBar() {
   return (
     <Navbar isBordered>
       <NavbarBrand>
-        <AcmeLogo />
-        <p className="font-bold text-inherit">CD</p>
+        <Image width={60} height={60} alt="logo" src="/gcLogo.png" />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {/* <NavbarItem>

@@ -49,6 +49,7 @@ export default function DashBoard() {
   const [convitesRecusadosS, setConvitesRecusadosS] = useState("0");
   const [convitesPendentesS, setConvitesPendentesS] = useState("0");
   const [numeroAcompanhantes, setNumeroAcompanhantes] = useState("1");
+  const [addConvidado, setAddConvidado] = useState(false);
   const [listaMesas, setListaMesas] = useState([]);
   const [listaCategoria, setListaCategoria] = useState([]);
   const [listaConvidados, setListaConvidados] = useState([]);
@@ -716,6 +717,14 @@ export default function DashBoard() {
       }
     }
   }
+  useEffect(() => {
+    evento.length &&
+      evento.map((item) => {
+        if (parseInt(item.totalConvidados) >= parseInt(convitesGeradosS)) {
+          setAddConvidado(true);
+        }
+      });
+  }, [evento, convitesGeradosS]);
   return (
     <div>
       <NavBar />
@@ -736,6 +745,7 @@ export default function DashBoard() {
           setIsAddMesaForm={setIsAddMesaForm}
           isForm={isForm}
           setIsAddInfoForm={setIsAddInfoForm}
+          addConvidado={addConvidado}
         />
         <hr />
         {isForm ? (
