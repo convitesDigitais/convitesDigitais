@@ -247,37 +247,43 @@ export default function ConviteModelo1() {
       </div>
       <div className="flex flex-col justify-center pt-4">
         <div className="text-center">
-          <small className="text-center font-semibold font-serif">
+          <small className="text-center font-semibold font-serif text-black">
             &quot;Portanto, deixará o homem o seu pai e a sua mãe, e
           </small>
         </div>
         <div className="text-center">
-          <small className="text-center font-semibold font-serif">
+          <small className="text-center font-semibold font-serif text-black">
             apegar-se-á à sua mulher, e serão ambos uma carne.
           </small>
         </div>
         <div className="text-center">
-          <small className="text-center font-semibold font-serif">
+          <small className="text-center font-semibold font-serif text-black">
             (Gênesis 2:24)&quot;
           </small>
         </div>
       </div>
       <br />
       <div className="text-center">
-        <small className="text-center font-serif">
+        <small className="text-center font-serif text-black">
           Com a benção de Deus e de seus pais:
         </small>
       </div>
       <div className="grid grid-cols-2 gap-1">
         <div className="text-center">
-          <p className="text-center font-serif text-sm">Constantino Paulo</p>
-          <p className="text-center font-serif text-sm">
+          <p className="text-center font-serif text-black text-sm">
+            Constantino Paulo
+          </p>
+          <p className="text-center font-serif text-black text-sm">
             Laurenciana Seventine
           </p>
         </div>
         <div className="text-center">
-          <p className="text-center font-serif text-sm">Paulo Matavela</p>
-          <p className="text-center font-serif text-sm">Fátima Chitará</p>
+          <p className="text-center font-serif text-black text-sm">
+            Paulo Matavela
+          </p>
+          <p className="text-center font-serif text-black text-sm">
+            Fátima Chitará
+          </p>
         </div>
       </div>
       <div className="flex justify-center font-bold text-xl mt-4">
@@ -287,12 +293,12 @@ export default function ConviteModelo1() {
       </div>
       <div className="text-center pt-2">
         {" "}
-        <small className="font-semibold">
+        <small className="font-semibold text-black">
           TÊM A HONRA DE CONVIDAR EXMO (A) SR. (A)
         </small>
       </div>
       <div className="flex justify-center font-bold">
-        <p className="text-center font-bold font-convite text-3xl">
+        <p className="text-center font-bold font-convite text-3xl text-black">
           {nomeConvidado}
         </p>
       </div>
@@ -301,7 +307,7 @@ export default function ConviteModelo1() {
       </div>
       <div className="text-center">
         {" "}
-        <small className="font-semibold">
+        <small className="font-semibold text-black">
           ASSISTIR O SEU CASAMENTO A REALIZAR-SE NO DIA
         </small>
       </div>
@@ -319,7 +325,7 @@ export default function ConviteModelo1() {
             <ColoredLine />
           </div>
           <div>
-            <p className="text-center font-semibold">
+            <p className="text-center font-semibold text-black">
               {meses[dataEvento.substring(5, 7) - 1]} de{" "}
               {dataEvento.substring(0, 4)}
             </p>
@@ -331,29 +337,31 @@ export default function ConviteModelo1() {
       </div>
       <div className="text-center pt-2">
         {" "}
-        <small className="text-center font-bold">
+        <small className="text-center font-bold text-black">
           Cerimónia Civil - {horaCerimoniaCivil}h
         </small>
       </div>
       <div className="text-center">
         {" "}
-        <small className="text-center font-semibold">
+        <small className="text-center font-semibold text-black">
           Palácio dos Casamentos
         </small>
       </div>
       <div className="text-center">
         {" "}
-        <small className="text-center font-bold">
+        <small className="text-center font-bold text-black">
           Cerimónia Religiosa - {horaCerimoniaReligiosa}h
         </small>
       </div>
       <div className="text-center">
         {" "}
-        <small className="text-center font-semibold">{enderecoIgreja}</small>
+        <small className="text-center font-semibold text-black">
+          {enderecoIgreja}
+        </small>
       </div>
       <div className="text-center">
         {" "}
-        <small className="text-center font-bold">
+        <small className="text-center font-bold text-black">
           Copo de água - {copoAgua}h
         </small>
       </div>
@@ -361,7 +369,7 @@ export default function ConviteModelo1() {
         {" "}
         <div>
           {" "}
-          <small className="text-center font-semibold">
+          <small className="text-center font-semibold text-black">
             {enderecoSalao} (
             <small className="font-bold text-orange-300 text-sm">
               Mesa: {mesa}
@@ -458,23 +466,23 @@ export default function ConviteModelo1() {
         {" "}
         {/* <small>Acompanhante: {numeroAcompanhantes} pessoa(s)</small> */}
         {/* <br /> */}
-        <small className="font-bold">
+        <small className="font-bold text-black">
           NB: Por favor, confirme a sua presença até o dia 15 de Novembro.
         </small>
       </div>
       <div className="text-center pb-16">
         {" "}
-        <small>NÃO EXTENSIVO A CRIANÇAS</small>
+        <small className="text-black">NÃO EXTENSIVO A CRIANÇAS</small>
       </div>
       <Modal isOpen={aceitar.isOpen} onOpenChange={aceitar.onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
+              <ModalHeader className="flex flex-col gap-1 text-black">
                 Confirmação do convite
               </ModalHeader>
               <ModalBody>
-                <p>Selecione uma das opções abaixo</p>
+                <p className="text-black">Selecione uma das opções abaixo</p>
               </ModalBody>
               <ModalFooter>
                 <Button
@@ -506,14 +514,14 @@ export default function ConviteModelo1() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
+              <ModalHeader className="flex flex-col gap-1 text-black">
                 Mensagem de Felicitação
               </ModalHeader>
               <ModalBody>
                 <Textarea
                   label="Felicitações"
                   placeholder="Escreva a sua mensagen de felicitação"
-                  className="max-w-xs"
+                  className="max-w-xs text-black"
                   value={mensagem}
                   onValueChange={(value) => setMensagem(value)}
                 />
